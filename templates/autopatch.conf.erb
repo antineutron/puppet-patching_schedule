@@ -32,8 +32,8 @@ SAFE_MODE=0;
 AUTO_REBOOT_WHEN="<%= @reboot_at %>";
     
 # Who to notify about patch updates and reboots
-NOTIFY_EMAIL="<%= @notifications_to %>";
-FROM_EMAIL="<%= @notifications_from %>";
+NOTIFY_EMAIL="<%= @notification_email_to %>";
+FROM_EMAIL="<%= @notification_email_from %>";
                 
 # Where to log what we're doing
 LOGFILE="<%= @logfile %>";
