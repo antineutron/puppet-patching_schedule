@@ -69,7 +69,7 @@ class patching_schedule (
   cron{ "patching_schedule":
     user => root,
     command => "${install_dir}/patching_schedule/sbin/autopatch",
-    day => $patch_day,
+    weekday => $patch_day,
     hour => $patch_hour,
     minute => $real_patch_minute,
     require => File["${install_dir}/patching_schedule/sbin/autopatch"],
