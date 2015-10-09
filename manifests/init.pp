@@ -78,7 +78,7 @@ class patching_schedule (
   # Ensure the log gets rotated, and keep a reasonable number of them
   logrotate::rule { 'patching_schedule':
     path         => $logfile,
-    rotate       => 20,
+    rotate       => '20',
     rotate_every => 'week',
     require => File["${install_dir}/patching_schedule/sbin/autopatch"],
   }
