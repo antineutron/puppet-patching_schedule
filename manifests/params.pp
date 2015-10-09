@@ -21,7 +21,7 @@ class patching_schedule::params (
 
   # Email notification from and to address
   String $notification_email_from = "root",
-  Array[String] $notification_email_to   = ["root"],
+  String $notification_email_to   = "root",
 
   # Should all available patches be applied, or just security updates?
   Boolean $security_only = false,

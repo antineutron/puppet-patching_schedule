@@ -24,7 +24,7 @@ class patching_schedule (
 
   # Email notification from and to address
   String $notification_email_from = $patching_schedule::params::notification_email_from,
-  Array[String] $notification_email_to   = $patching_schedule::params::notification_email_to  ,
+  String $notification_email_to   = $patching_schedule::params::notification_email_to,
 
   # Should all available patches be applied, or just security updates?
   Boolean $security_only = $patching_schedule::params::security_only,
