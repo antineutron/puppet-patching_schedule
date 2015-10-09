@@ -1,0 +1,42 @@
+### Managed by puppet, local changes will be overridden ###
+
+# Reboot automatically after kernel update?
+<% if @do_reboot %>
+AUTO_REBOOT=1;
+<% else %>
+AUTO_REBOOT=0;
+<% end %>
+        
+# Delay in minutes when running reboot command (logged-in users will be notified)
+REBOOT_DELAY=<%= @reboot_delay %>;
+
+# Reboot notification message to logged-in users
+REBOOT_MESSAGE="<%= @reboot_message %>";
+                
+# Only do security updates by default,
+# set this to 1 to do a full update
+<% if @security_only %>
+DO_FULL_UPGRADE=0;
+<% else %>
+DO_FULL_UPGRADE=1;
+<% end %>
+
+# Safe mode: do not actually reboot, just notify
+SAFE_MODE=0;    
+        
+# When to auto-reboot
+# Options:
+#   now (just reboot after patching)
+#   HH24 MM format (e.g. 06 45) - reboot the next time we hit this timestamp
+#   DD HH24 MM format (e.g. 1 06 45) - reboot the next time the dat/timestamp match (day num is 0(sun)-6(sat), date's %w)
+AUTO_REBOOT_WHEN="<%= @reboot_at %>";
+    
+# Who to notify about patch updates and reboots
+NOTIFY_EMAIL="<%= @notifications_to %>";
+FROM_EMAIL="<%= @notifications_from %>";
+                
+# Where to log what we're doing
+LOGFILE="<%= @logfile %>";
+
+# Do not reboot unless this command succeeds
+AUTO_REBOOT_ONLYIF="<%= @reboot_onlyif %>";
