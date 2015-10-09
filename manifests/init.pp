@@ -37,8 +37,16 @@ class patching_schedule (
 ) inherits patching_schedule::params {
 
   # Implement splay - add a random (but per-host consistent) extra delay to the patching and rebooting times
-  $real_patch_minute = $patch_minute + fqdn_rand($patch_splay)
-  $real_reboot_minute = $reboot_minute + fqdn_rand($reboot_splay)
+  if ($patch_splay > 0) {
+    $real_patch_minute = $patch_minute + fqdn_rand($patch_splay)
+  } else {
+    $real_patch_minute = $patch_minute
+  }
+  if ($reboot_splay > 0) {
+    $real_reboot_minute = $reboot_minute + fqdn_rand($reboot_splay)
+  } else {
+    $real_reboot_minute = $reboot_minute
+  }
 
   # The script wants the reboot time as a string  
   $reboot_at = "$reboot_day $reboot_hour $real_reboot_minute"
