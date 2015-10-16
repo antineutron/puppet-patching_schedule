@@ -165,7 +165,7 @@ function isListening {
 SUCCESS=1;
 
 if [ $LOG_TO_STDOUT -eq 0 ]; then
-	exec >$LOGFILE;
+	exec >>$LOGFILE 2>&1;
 fi;
 
 
