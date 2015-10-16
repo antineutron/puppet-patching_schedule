@@ -129,9 +129,9 @@ function doAutoReboot {
 
 		log "Planned reboot in $add_days days";
 		if [ $SAFE_MODE -eq 0 ]; then
-			echo "$0 --do-reboot" | at $REBOOT_HOUR:$REBOOT_MIN 2>&1;
+			echo "$0 --do-reboot" | at $REBOOT_HOUR:$REBOOT_MIN + $add_days days 2>&1;
 		else
-			log "Would schedule reboot: $0 --do-reboot | at $REBOOT_HOUR:$REBOOT_MIN 2>&1";
+			log "Would schedule reboot: $0 --do-reboot | at $REBOOT_HOUR:$REBOOT_MIN + $add_days days 2>&1";
 		fi;
 
 	# OK, I have no idea what you're trying to do. Flail.
